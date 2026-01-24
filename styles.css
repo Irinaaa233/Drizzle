@@ -1,0 +1,648 @@
+/* ============================================
+   重置和基础样式
+   ============================================ */
+/* 全局样式重置：清除所有元素的默认内外边距，统一盒模型 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 盒模型：宽度包含padding和border */
+}
+
+/* CSS变量定义：统一管理颜色和样式值，方便后续修改 */
+:root {
+    --primary-color: #fffdf3; /* 主背景色：米白色 */
+    --text-primary: #2c2c2c; /* 主要文字颜色：深灰色 */
+    --text-secondary: #666666; /* 次要文字颜色：中灰色 */
+    --accent-color: #4a90e2; /* 强调色：蓝色（用于主要按钮等） */
+    --accent-hover: #357abd; /* 强调色悬停状态：深蓝色 */
+    --secondary-color: #be8b62; /* 副色调：金棕色（用于边框、次要按钮等） */
+    --secondary-hover: #a6754f; /* 副色调悬停状态：深金棕色 */
+    --border-color: #e8e8e8; /* 边框颜色：浅灰色 */
+    --shadow: rgba(0, 0, 0, 0.05); /* 阴影颜色：浅黑色半透明 */
+    --shadow-hover: rgba(0, 0, 0, 0.1); /* 悬停阴影颜色：稍深的阴影 */
+}
+
+/* 页面滚动行为：平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 页面主体样式 */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; /* 字体：优先使用Inter，备用系统字体 */
+    background-color: var(--primary-color); /* 背景色 */
+    color: var(--text-primary); /* 文字颜色 */
+    line-height: 1.6; /* 行高：提高可读性 */
+    overflow-x: hidden; /* 隐藏横向滚动条 */
+}
+
+/* 容器：限制最大宽度，居中显示，添加左右内边距 */
+.container {
+    max-width: 1200px; /* 最大宽度：1200像素 */
+    margin: 0 auto; /* 水平居中 */
+    padding: 0 2rem; /* 左右内边距 */
+}
+
+/* ============================================
+   导航栏样式
+   ============================================ */
+/* 导航栏：固定在页面顶部 */
+.navbar {
+    position: fixed; /* 固定定位 */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 253, 243, 0.95); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 背景模糊效果 */
+    z-index: 1000; /* 层级：确保在其他元素之上 */
+    padding: 1.5rem 0; /* 上下内边距 */
+    border-bottom: 1px solid var(--border-color); /* 底部边框 */
+}
+
+/* 导航内容：使用flex布局，左右分布 */
+.nav-content {
+    display: flex;
+    justify-content: space-between; /* 左右两端对齐 */
+    align-items: center; /* 垂直居中 */
+}
+
+/* Logo样式 */
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700; /* 粗体 */
+    letter-spacing: -0.5px; /* 字母间距：紧凑 */
+    color: var(--text-primary);
+}
+
+/* 导航链接列表 */
+.nav-links {
+    display: flex;
+    list-style: none; /* 移除列表样式 */
+    gap: 2.5rem; /* 链接之间的间距 */
+}
+
+/* 导航链接样式 */
+.nav-links a {
+    text-decoration: none; /* 移除下划线 */
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: color 0.3s ease; /* 颜色过渡动画 */
+    position: relative; /* 相对定位：为下划线效果做准备 */
+}
+
+/* 导航链接悬停效果：文字变深 */
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+/* 导航链接下划线动画：初始宽度为0 */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0; /* 初始宽度为0 */
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease; /* 宽度过渡动画 */
+}
+
+/* 悬停时下划线展开 */
+.nav-links a:hover::after {
+    width: 100%; /* 宽度变为100% */
+}
+
+/* 移动端菜单按钮：默认隐藏 */
+.menu-toggle {
+    display: none; /* 默认不显示 */
+    flex-direction: column; /* 垂直排列 */
+    gap: 5px; /* 线条之间的间距 */
+    background: none;
+    border: none;
+    cursor: pointer; /* 鼠标指针：手型 */
+    padding: 5px;
+}
+
+/* 菜单按钮的三条横线 */
+.menu-toggle span {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease; /* 过渡动画 */
+}
+
+/* ============================================
+   主页面区域（Hero Section）样式
+   ============================================ */
+/* 主页面区域：占据整个视口高度 */
+.hero {
+    min-height: 100vh; /* 最小高度：100%视口高度 */
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    padding: 8rem 0 4rem; /* 上下内边距：顶部留出导航栏空间 */
+    position: relative;
+    overflow: hidden; /* 隐藏溢出内容 */
+}
+
+/* 主页面容器：使用网格布局，左右两列 */
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 两列等宽 */
+    gap: 4rem; /* 列之间的间距 */
+    align-items: center; /* 垂直对齐 */
+}
+
+/* 主页面内容区域 */
+.hero-content {
+    z-index: 2; /* 层级：确保在背景元素之上 */
+}
+
+/* 主标题：大号字体，渐变文字效果 */
+.hero-title {
+    font-family: 'Algerian', serif; /* 使用Algerian字体 */
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: -2px; /* 字母间距：紧凑 */
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%); /* 渐变背景 */
+    -webkit-background-clip: text; /* 将背景裁剪为文字形状 */
+    -webkit-text-fill-color: transparent; /* 文字透明，显示背景 */
+    background-clip: text;
+}
+
+/* 副标题样式 */
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+/* 描述文字样式 */
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8; /* 行高：提高可读性 */
+    margin-bottom: 2.5rem;
+    max-width: 500px; /* 最大宽度：限制文字宽度 */
+}
+
+/* 按钮组：水平排列 */
+.hero-buttons {
+    display: flex;
+    gap: 1rem; /* 按钮之间的间距 */
+}
+
+/* 按钮基础样式 */
+.btn {
+    padding: 1rem 2rem; /* 内边距 */
+    border-radius: 8px; /* 圆角 */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease; /* 所有属性过渡动画 */
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* 主要按钮：蓝色背景 */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* 主要按钮悬停效果：颜色变深，上移，添加阴影 */
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px); /* 向上移动2像素 */
+    box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3); /* 阴影效果 */
+}
+
+/* 次要按钮：透明背景，金棕色边框 */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--secondary-color); /* 使用副色调作为边框 */
+    color: var(--secondary-color);
+}
+
+/* 次要按钮悬停效果：填充背景色，上移，添加阴影 */
+.btn-secondary:hover {
+    border-color: var(--secondary-hover);
+    background-color: var(--secondary-color); /* 填充副色调 */
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(190, 139, 98, 0.3); /* 副色调阴影 */
+}
+
+/* 主页面右侧视觉区域：图片展示区域 */
+.hero-visual {
+    position: relative;
+    height: 700px; /* 固定高度：适应竖版图片 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 图片容器：带边框和阴影的包装器 */
+.hero-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 550px; /* 最大宽度 */
+    height: 100%;
+    border-radius: 20px; /* 圆角 */
+    overflow: hidden; /* 隐藏溢出内容 */
+    box-shadow: 0 20px 60px rgba(190, 139, 98, 0.3); /* 副色调阴影 */
+    border: 3px solid var(--secondary-color); /* 副色调边框 */
+    background-color: var(--primary-color); /* 背景色：填充图片周围空白 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 产品图片：完整显示，不被裁剪 */
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 完整显示图片，保持比例 */
+    transition: transform 0.5s ease; /* 变换过渡动画 */
+}
+
+/* 图片悬停效果：轻微放大 */
+.hero-image-wrapper:hover .hero-image {
+    transform: scale(1.05); /* 放大5% */
+}
+
+/* 图片容器渐变遮罩：添加副色调渐变效果 */
+.hero-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(190, 139, 98, 0.1) 0%, rgba(190, 139, 98, 0.05) 100%); /* 副色调渐变 */
+    z-index: 1;
+    pointer-events: none; /* 不阻挡鼠标事件 */
+}
+
+/* ============================================
+   通用区域样式
+   ============================================ */
+/* 所有区域的基础样式 */
+section {
+    padding: 6rem 0; /* 上下内边距 */
+}
+
+/* 区域标题区域：居中显示 */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem; /* 底部间距 */
+}
+
+/* 区域标题样式 */
+.section-title {
+    font-family: 'Algerian', serif; /* 使用Algerian字体 */
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+/* 区域副标题样式 */
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* ============================================
+   关于我们区域样式
+   ============================================ */
+/* 关于内容：左右两列布局 */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 两列等宽 */
+    gap: 4rem;
+    align-items: center;
+}
+
+/* 关于文字样式 */
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.9; /* 行高：提高可读性 */
+    color: var(--text-secondary);
+}
+
+/* 段落间距 */
+.about-text p {
+    margin-bottom: 1.5rem;
+}
+
+/* 统计数据网格：三列布局 */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 三列等宽 */
+    gap: 2rem;
+}
+
+/* 统计卡片样式 */
+.stat-item {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--shadow); /* 阴影效果 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 过渡动画 */
+}
+
+/* 统计卡片悬停效果：上移，阴影加深 */
+.stat-item:hover {
+    transform: translateY(-5px); /* 向上移动5像素 */
+    box-shadow: 0 8px 30px var(--shadow-hover);
+}
+
+/* 统计数字样式：使用副色调 */
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--secondary-color); /* 副色调 */
+    margin-bottom: 0.5rem;
+}
+
+/* 统计标签样式 */
+.stat-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-transform: uppercase; /* 大写字母 */
+    letter-spacing: 1px; /* 字母间距 */
+}
+
+/* ============================================
+   产品展示区域样式
+   ============================================ */
+/* 产品区域：白色背景 */
+.products {
+    background-color: white;
+}
+
+/* 产品网格：响应式布局，自动调整列数 */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自动适应，最小300px */
+    gap: 2rem;
+}
+
+/* 产品卡片样式 */
+.product-card {
+    padding: 3rem 2rem;
+    background-color: var(--primary-color);
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 过渡动画 */
+    border: 1px solid var(--border-color);
+}
+
+/* 产品卡片悬停效果：上移，阴影加深 */
+.product-card:hover {
+    transform: translateY(-8px); /* 向上移动8像素 */
+    box-shadow: 0 12px 40px var(--shadow-hover);
+}
+
+/* 产品图标样式 */
+.product-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+/* 产品标题样式 */
+.product-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+/* 产品描述样式 */
+.product-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* ============================================
+   联系表单区域样式
+   ============================================ */
+/* 联系内容：左右两列布局 */
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 两列等宽 */
+    gap: 4rem;
+    max-width: 900px; /* 最大宽度 */
+    margin: 0 auto; /* 居中 */
+}
+
+/* 联系表单：垂直排列 */
+.contact-form {
+    display: flex;
+    flex-direction: column; /* 垂直方向 */
+    gap: 1.5rem; /* 表单项之间的间距 */
+}
+
+/* 表单输入框和文本域样式 */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-family: inherit; /* 继承字体 */
+    font-size: 1rem;
+    background-color: white;
+    color: var(--text-primary);
+    transition: border-color 0.3s ease; /* 边框颜色过渡 */
+}
+
+/* 输入框聚焦效果：边框变为强调色 */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none; /* 移除默认轮廓 */
+    border-color: var(--accent-color); /* 强调色边框 */
+}
+
+/* 文本域：允许垂直调整大小 */
+.form-group textarea {
+    resize: vertical;
+}
+
+/* 联系信息区域：垂直排列 */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-top: 1rem;
+}
+
+/* 信息项标题样式 */
+.info-item h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+/* 信息项内容样式 */
+.info-item p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* 社交媒体链接：水平排列 */
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* 允许换行 */
+}
+
+/* 社交媒体链接样式 */
+.social-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease; /* 颜色过渡 */
+}
+
+/* 社交媒体链接悬停效果 */
+.social-links a:hover {
+    color: var(--accent-hover);
+}
+
+/* ============================================
+   页脚样式
+   ============================================ */
+/* 页脚区域：白色背景 */
+.footer {
+    background-color: white;
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-color); /* 顶部边框 */
+}
+
+/* 页脚内容：左右分布 */
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* 左右两端对齐 */
+    align-items: center; /* 垂直居中 */
+}
+
+/* 页脚Logo样式 */
+.footer-logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* 页脚文字样式 */
+.footer-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   响应式设计：适配不同屏幕尺寸
+   ============================================ */
+/* 中等屏幕（平板）：宽度小于968px */
+@media (max-width: 968px) {
+    /* 主页面：改为单列布局 */
+    .hero .container {
+        grid-template-columns: 1fr; /* 单列 */
+        text-align: center; /* 文字居中 */
+    }
+
+    /* 主标题：缩小字体 */
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    /* 图片区域：调整高度 */
+    .hero-visual {
+        height: 500px;
+        margin-top: 2rem;
+    }
+    
+    /* 图片容器：占满宽度 */
+    .hero-image-wrapper {
+        max-width: 100%;
+    }
+
+    /* 关于内容：改为单列 */
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    /* 统计数据：保持三列 */
+    .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* 联系内容：改为单列 */
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    /* 导航链接：隐藏 */
+    .nav-links {
+        display: none;
+    }
+
+    /* 菜单按钮：显示 */
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+/* 小屏幕（手机）：宽度小于640px */
+@media (max-width: 640px) {
+    /* 容器：减少左右内边距 */
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    /* 主标题：进一步缩小 */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    /* 副标题：缩小 */
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    /* 区域标题：缩小 */
+    .section-title {
+        font-size: 2rem;
+    }
+
+    /* 统计数据：改为单列 */
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+
+    /* 产品网格：改为单列 */
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 按钮组：垂直排列 */
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    /* 页脚内容：垂直排列，居中 */
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}

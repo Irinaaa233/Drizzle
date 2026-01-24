@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 页面基本设置 -->
+    <meta charset="UTF-8"> <!-- 字符编码：支持中文等字符 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 响应式设计：适配移动设备 -->
+    <title>Drizzle - Elegant Solutions for Modern Life</title> <!-- 浏览器标签页标题 -->
+    
+    <!-- 引入样式表 -->
+    <link rel="stylesheet" href="/Drizzle/styles.css">
+    
+    <!-- 引入Google字体：Inter字体，提供多种字重 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏：固定在页面顶部 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <!-- 品牌Logo -->
+                <div class="logo">Drizzle</div>
+                <!-- 导航链接：点击可跳转到对应页面区域 -->
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <!-- 移动端菜单按钮：小屏幕时显示 -->
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主页面区域（Hero Section）：网站首屏展示 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <!-- 左侧内容区域：标题、描述和按钮 -->
+            <div class="hero-content">
+                <h1 class="hero-title">Drizzle</h1> <!-- 主标题 -->
+                <p class="hero-subtitle">Elegant Liquor for Modern Life</p> <!-- 副标题 -->
+                <p class="hero-description">Where simplicity meets sophistication, creating experiences that flow seamlessly into your everyday.</p> <!-- 描述文字 -->
+                <!-- 操作按钮组 -->
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">Explore</a> <!-- 主要按钮：跳转到产品区域 -->
+                    <a href="#about" class="btn btn-secondary">Learn More</a> <!-- 次要按钮：跳转到关于区域 -->
+                </div>
+            </div>
+            <!-- 右侧视觉区域：展示产品图片 -->
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <!-- 产品展示图片：1054x1582像素，完整显示在边框内 -->
+                    <img src="images/1.jpg" alt="Drizzle Liqueur" class="hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们区域：介绍品牌信息 -->
+    <section id="about" class="about">
+        <div class="container">
+            <!-- 区域标题和副标题 -->
+            <div class="section-header">
+                <h2 class="section-title">About Drizzle</h2>
+                <p class="section-subtitle">Crafted with intention, designed for impact</p>
+            </div>
+            <div class="about-content">
+                <!-- 左侧：品牌介绍文字 -->
+                <div class="about-text">
+                    <p>Drizzle represents a philosophy of refined minimalism and thoughtful design. We believe that the best products and experiences are those that enhance your life without overwhelming it.</p>
+                    <p>Our approach combines aesthetic elegance with functional excellence, creating solutions that are both beautiful and purposeful. Every detail matters, every interaction counts.</p>
+                </div>
+                <!-- 右侧：统计数据展示 -->
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">2018</div> <!-- 成立年份 -->
+                        <div class="stat-label">Founded</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div> <!-- 产品数量 -->
+                        <div class="stat-label">Products</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100K+</div> <!-- 客户数量 -->
+                        <div class="stat-label">Customers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示区域：展示产品分类 -->
+    <section id="products" class="products">
+        <div class="container">
+            <!-- 区域标题和副标题 -->
+            <div class="section-header">
+                <h2 class="section-title">Our Products</h2>
+                <p class="section-subtitle">Discover our curated collection</p>
+            </div>
+            <!-- 产品卡片网格：响应式布局，自动调整列数 -->
+            <div class="products-grid">
+                <!-- 产品卡片1：基础系列 -->
+                <div class="product-card">
+                    <div class="product-icon">✨</div> <!-- 图标 -->
+                    <h3 class="product-title">Essentials</h3> <!-- 产品名称 -->
+                    <p class="product-description">Core products designed for daily use, combining functionality with timeless design.</p> <!-- 产品描述 -->
+                </div>
+                <!-- 产品卡片2：收藏系列 -->
+                <div class="product-card">
+                    <div class="product-icon">🎨</div>
+                    <h3 class="product-title">Collections</h3>
+                    <p class="product-description">Curated sets that work harmoniously together, creating cohesive experiences.</p>
+                </div>
+                <!-- 产品卡片3：高端系列 -->
+                <div class="product-card">
+                    <div class="product-icon">🌟</div>
+                    <h3 class="product-title">Premium</h3>
+                    <p class="product-description">Exclusive offerings crafted with exceptional attention to detail and quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系表单区域：用户可在此提交留言 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <!-- 区域标题和副标题 -->
+            <div class="section-header">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle">We'd love to hear from you</p>
+            </div>
+            <div class="contact-content">
+                <!-- 左侧：联系表单 -->
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required> <!-- 姓名输入框 -->
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required> <!-- 邮箱输入框 -->
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea> <!-- 留言文本框 -->
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button> <!-- 提交按钮 -->
+                </form>
+                <!-- 右侧：联系信息 -->
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h4>Email</h4> <!-- 邮箱标题 -->
+                        <p>hello@drizzle.com</p> <!-- 邮箱地址 -->
+                    </div>
+                    <div class="info-item">
+                        <h4>Location</h4> <!-- 位置标题 -->
+                        <p>San Francisco, CA</p> <!-- 地址 -->
+                    </div>
+                    <div class="info-item">
+                        <h4>Follow Us</h4> <!-- 社交媒体标题 -->
+                        <div class="social-links">
+                            <a href="#" aria-label="Instagram">Instagram</a> <!-- Instagram链接 -->
+                            <a href="#" aria-label="Twitter">Twitter</a> <!-- Twitter链接 -->
+                            <a href="#" aria-label="LinkedIn">LinkedIn</a> <!-- LinkedIn链接 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚：页面底部信息 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Drizzle</div> <!-- 页脚Logo -->
+                <p class="footer-text">&copy; 2026 Drizzle. All rights reserved.</p> <!-- 版权信息 -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- 引入JavaScript文件：处理页面交互功能 -->
+    <script src="script.js"></script>
+</body>
+</html>
