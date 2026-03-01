@@ -103,27 +103,33 @@
                 <h2 class="section-title">Our Products</h2>
                 <p class="section-subtitle">COMMING SOON</p>
             </div>
-            <!-- 产品卡片网格：响应式布局，自动调整列数 -->
-            <div class="products-grid">
-                <!-- 产品卡片1：基础系列 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <img src="images/AAA.png" alt="Essentials 产品图标">
-                    </div> <!-- 图标 -->
-                    <h3 class="product-title">Drizzle Signature Hazelnut Cream</h3> <!-- 产品名称 -->
-                    <p class="product-description">Indulge in the warm, nutty elegance of our Hazelnut Cream Liqueur, crafted for those who crave depth without the dairy. Made with our signature dairy-free cream base, this velvety liqueur delivers roasted hazelnut notes layered with subtle sweetness and a silky finish.</p> <!-- 产品描述 -->
-                </div>
-                <!-- 产品卡片2：收藏系列 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <img src="images/BBB.png" alt="Collections 产品图标">
+            <!-- 产品展示布局：大图 + 文本覆盖在前 -->
+            <div class="products-layout">
+                <!-- 产品1：榛子口味，大图在后，文字在前 -->
+                <div class="product-row">
+                    <div class="product-image">
+                        <img src="images/AAA.png" alt="Drizzle Signature Hazelnut Cream" class="product-photo">
                     </div>
-                    <h3 class="product-title">Drizzle Signature Vanilla Cream</h3>
-                    <p class="product-description">Our Vanilla Cream Liqueur reimagines a timeless favorite with a modern, dairy-free twist. Smooth and delicately sweet, it opens with aromatic vanilla bean notes and finishes with a creamy texture, without the heaviness of traditional cream liqueurs.</p>
+                    <div class="product-info">
+                        <h3 class="product-title">Drizzle Signature Hazelnut Cream</h3> <!-- 产品名称 -->
+                        <p class="product-description">Indulge in the warm, nutty elegance of our Hazelnut Cream Liqueur, crafted for those who crave depth without the dairy. Made with our signature dairy-free cream base, this velvety liqueur delivers roasted hazelnut notes layered with subtle sweetness and a silky finish.</p> <!-- 产品描述 -->
+                    </div>
+                </div>
+
+                <!-- 产品2：香草口味，文本卡片靠右覆盖在图片前 -->
+                <div class="product-row product-row--right">
+                    <div class="product-image">
+                        <img src="images/BBB.png" alt="Drizzle Signature Vanilla Cream" class="product-photo">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Drizzle Signature Vanilla Cream</h3>
+                        <p class="product-description">Our Vanilla Cream Liqueur reimagines a timeless favorite with a modern, dairy-free twist. Smooth and delicately sweet, it opens with aromatic vanilla bean notes and finishes with a creamy texture, without the heaviness of traditional cream liqueurs.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
 
     <!-- 联系表单区域：用户可在此提交留言 -->
@@ -185,6 +191,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
