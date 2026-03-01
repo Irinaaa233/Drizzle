@@ -396,54 +396,50 @@ section {
     gap: 4rem;
 }
 
-/* 单个产品区块：大图在后，文字卡片覆盖在前 */
+/* 单个产品区块：大图在左 / 文字在右（桌面端） */
 .product-row {
-    position: relative;
-    min-height: 380px;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
     align-items: center;
+    gap: 2.5rem;
 }
 
-/* 产品大图容器：铺满整个区块 */
+/* 产品大图容器：保持固定比例，完整展示瓶身 */
 .product-image {
-    position: absolute;
-    inset: 0; /* top/right/bottom/left 全为0，占满父容器 */
-    overflow: hidden;
     border-radius: 24px;
+    overflow: hidden;
+    background-color: var(--primary-color);
 }
+
 
 /* 产品大图：完整呈现整瓶，不被裁剪 */
 .product-photo {
     width: 100%;
-    height: 100%;
-   object-fit: contain; /* 完整显示图片，不裁剪 */
+    height: auto;
+    object-fit: contain; /* 完整显示图片，不裁剪 */
     object-position: center; /* 居中展示 */
-    background-color: var(--primary-color); /* 空白区域用主色填充 */
+    display: block;
 }
 
-/* 产品文字信息卡片：覆盖在图片前面 */
+/* 产品文字信息卡片：位于图片一侧，不遮挡瓶身 */
 .product-info {
-    position: relative;
-    z-index: 1; /* 始终在图片上方 */
     max-width: 460px;
     padding: 2.4rem 2.8rem;
-    background: rgba(255, 253, 243, 0.95); /* 半透明米白背景，类似玻璃卡片 */
-    backdrop-filter: blur(10px);
+    background: rgba(255, 253, 243, 0.98);
     border-radius: 18px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-    border: 1px solid rgba(190, 139, 98, 0.35); /* 带副色调的边框 */
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(190, 139, 98, 0.25); /* 带副色调的边框 */
 }
 
-/* 默认让文字卡片靠左，图片在后铺满 */
-.product-row .product-info {
-    margin-left: 3rem;
+/* 第二个产品：左右对调，让布局更有节奏感 */
+.product-row.product-row--right .product-image {
+    order: 2;
 }
 
-/* 第二个产品：让文字卡片靠右，形成左右交错效果 */
 .product-row.product-row--right .product-info {
-    margin-left: auto;
-    margin-right: 3rem;
+    order: 1;
 }
+
 
 /* 产品标题样式（沿用原有字号与颜色） */
 .product-info .product-title {
@@ -675,6 +671,7 @@ section {
         text-align: center;
     }
 }
+
 
 
 
