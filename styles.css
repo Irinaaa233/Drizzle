@@ -13,8 +13,8 @@
     --primary-color: #fffdf3; /* 主背景色：米白色 */
     --text-primary: #2c2c2c; /* 主要文字颜色：深灰色 */
     --text-secondary: #666666; /* 次要文字颜色：中灰色 */
-    --accent-color: #4a90e2; /* 强调色：蓝色（用于主要按钮等） */
-    --accent-hover: #357abd; /* 强调色悬停状态：深蓝色 */
+    --accent-color: #703d1a; /* 强调色：棕色（用于主要按钮等） */
+    --accent-hover: #93453b; /* 强调色悬停状态：棕红 */
     --secondary-color: #be8b62; /* 副色调：金棕色（用于边框、次要按钮等） */
     --secondary-hover: #a6754f; /* 副色调悬停状态：深金棕色 */
     --border-color: #e8e8e8; /* 边框颜色：浅灰色 */
@@ -414,8 +414,22 @@ section {
 
 /* 产品图标样式 */
 .product-icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+     width: 72px; /* 图标容器宽度（插入图片时会生效） */
+    height: 72px; /* 图标容器高度（插入图片时会生效） */
+    margin: 0 auto 1.5rem; /* 居中 + 底部间距 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem; /* 使用 emoji 图标时会生效 */
+    line-height: 1; /* 避免 emoji 造成额外行高 */
+}
+
+/* 当你在 .product-icon 里放 <img> 时，确保图片等比缩放并居中展示 */
+.product-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 完整显示图标，不裁剪 */
+    display: block; /* 去掉图片底部空隙 */
 }
 
 /* 产品标题样式 */
@@ -646,3 +660,4 @@ section {
         text-align: center;
     }
 }
+
