@@ -389,61 +389,75 @@ section {
     background-color: white;
 }
 
-/* 产品网格：响应式布局，自动调整列数 */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自动适应，最小300px */
-    gap: 2rem;
+/* 产品整体布局：纵向排列每个产品区块 */
+.products-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
 }
 
-/* 产品卡片样式 */
-.product-card {
-    padding: 3rem 2rem;
-    background-color: var(--primary-color);
-    border-radius: 16px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 过渡动画 */
-    border: 1px solid var(--border-color);
-}
-
-/* 产品卡片悬停效果：上移，阴影加深 */
-.product-card:hover {
-    transform: translateY(-8px); /* 向上移动8像素 */
-    box-shadow: 0 12px 40px var(--shadow-hover);
-}
-
-/* 产品图标样式 */
-.product-icon {
-     width: 72px; /* 图标容器宽度（插入图片时会生效） */
-    height: 72px; /* 图标容器高度（插入图片时会生效） */
-    margin: 0 auto 1.5rem; /* 居中 + 底部间距 */
+/* 单个产品区块：大图在后，文字卡片覆盖在前 */
+.product-row {
+    position: relative;
+    min-height: 380px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 3rem; /* 使用 emoji 图标时会生效 */
-    line-height: 1; /* 避免 emoji 造成额外行高 */
 }
 
-/* 当你在 .product-icon 里放 <img> 时，确保图片等比缩放并居中展示 */
-.product-icon img {
+/* 产品大图容器：铺满整个区块 */
+.product-image {
+    position: absolute;
+    inset: 0; /* top/right/bottom/left 全为0，占满父容器 */
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+/* 产品大图：类似 Baileys 的大幅瓶身展示 */
+.product-photo {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 完整显示图标，不裁剪 */
-    display: block; /* 去掉图片底部空隙 */
+    object-fit: cover; /* 铺满区域，突出产品视觉 */
+    transform: scale(1.02);
 }
 
-/* 产品标题样式 */
-.product-title {
-    font-size: 1.5rem;
+/* 产品文字信息卡片：覆盖在图片前面 */
+.product-info {
+    position: relative;
+    z-index: 1; /* 始终在图片上方 */
+    max-width: 460px;
+    padding: 2.4rem 2.8rem;
+    background: rgba(255, 253, 243, 0.95); /* 半透明米白背景，类似玻璃卡片 */
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(190, 139, 98, 0.35); /* 带副色调的边框 */
+}
+
+/* 默认让文字卡片靠左，图片在后铺满 */
+.product-row .product-info {
+    margin-left: 3rem;
+}
+
+/* 第二个产品：让文字卡片靠右，形成左右交错效果 */
+.product-row.product-row--right .product-info {
+    margin-left: auto;
+    margin-right: 3rem;
+}
+
+/* 产品标题样式（沿用原有字号与颜色） */
+.product-info .product-title {
+    font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--text-primary);
 }
 
+
 /* 产品描述样式 */
-.product-description {
+.product-info .product-description {
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.8;
+    font-size: 1rem;
 }
 
 /* ============================================
@@ -660,4 +674,5 @@ section {
         text-align: center;
     }
 }
+
 
