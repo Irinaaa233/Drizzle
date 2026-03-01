@@ -654,10 +654,12 @@ section {
         grid-template-columns: 1fr;
     }
 
-    /* 产品网格：改为单列 */
-    .products-grid {
+    /* 产品区块：改为上下排列，图片在上，文字在下 */
+    .product-row {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
+
 
     /* 按钮组：垂直排列 */
     .hero-buttons {
@@ -671,6 +673,7 @@ section {
         text-align: center;
     }
 }
+
 
 
 
