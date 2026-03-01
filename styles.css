@@ -412,7 +412,7 @@ section {
     border-radius: 24px;
 }
 
-/* 产品大图：类似 Baileys 的大幅瓶身展示 */
+/* 产品大图：完整呈现整瓶，不被裁剪 */
 .product-photo {
     width: 100%;
     height: 100%;
@@ -675,6 +675,7 @@ section {
         text-align: center;
     }
 }
+
 
 
 
